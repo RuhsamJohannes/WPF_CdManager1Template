@@ -1,0 +1,40 @@
+﻿<Window x:Class="cdmanager.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:cdmanager.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="340" Width="511" MinHeight="180" MinWidth="392"
+        Name="wdMain">
+    
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="CD Sammlung" Grid.Row="0" Margin="0,10,0,20"/>
+
+        <ListView x:Name="lbxCds" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="CD-Titel" Width="200" DisplayMemberBinding="{Binding Path=AlbumTitle}"/>
+                        <GridViewColumn Header="Artist" Width="200" DisplayMemberBinding="{Binding Path=Artist}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <UniformGrid Grid.Row="2" Rows="1" Columns="3">
+            <Button Margin="10,10,10,10" Content="Neu" x:Name="btnNew"/>
+            <Button Margin="10,10,10,10" Content="Löschen" x:Name="btnDelete"/>
+            <Button Margin="10,10,10,10" Content="CD Bearbeiten" x:Name="btnEdit"/>
+        </UniformGrid>
+
+    </Grid>
+    
+</Window>
