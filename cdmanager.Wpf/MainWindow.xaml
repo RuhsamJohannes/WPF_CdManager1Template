@@ -16,7 +16,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="CD Sammlung" Grid.Row="0" Margin="0,10,0,20"/>
+        <TextBlock Text="CD Sammlung" Grid.Row="0" Margin="5,10,0,20"/>
 
         <ListView x:Name="lbxCds" Grid.Row="1">
             <ListView.View>

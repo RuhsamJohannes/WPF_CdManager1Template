@@ -18,18 +18,34 @@ namespace cdmanager.Wpf
     /// </summary>
     public partial class AddCdWindow : Window
     {
+        public Cd SelectedCd { get; }
         public AddCdWindow()
         {
             InitializeComponent();
             Loaded += AddCdWindow_Loaded;
         }
 
-        private void AddCdWindow_Loaded(object sender, RoutedEventArgs e)
+        public AddCdWindow(Cd selectedCd)
+        {
+            InitializeComponent();
+            SelectedCd = selectedCd;
+            Loaded += EditCdWindow_Loaded;
+        }
+
+        private void EditCdWindow_Loaded(object sender, RoutedEventArgs e)
         {
             btnCancel.Click += new RoutedEventHandler(btnCancel_Click);
             btnSave.Click += new RoutedEventHandler(btnSave_Click);
 
-            DataContext = new Cd() /*{ AlbumTitle = "<Bitte Titel Eingeben>"}*/;
+            lblTitle.Text = "Cd Bearbeiten";
+            DataContext = new Cd() { AlbumTitle = SelectedCd.AlbumTitle, Artist = SelectedCd.Artist };
+        }
+
+        private void AddCdWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            btnCancel.Click += new RoutedEventHandler(btnCancel_Click);
+            btnSave.Click += new RoutedEventHandler(btnSave_Click);
+            DataContext = new Cd();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -39,6 +55,11 @@ namespace cdmanager.Wpf
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            if (SelectedCd != null)
+            {
+                Repository.GetInstance().RemoveCd(SelectedCd);
+            }
+
             Repository.GetInstance().AddCd(DataContext as Cd);
             Close();
         }

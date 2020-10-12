@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Neue CD anlegen" Grid.Row="0" Margin="0,10,0,20"/>
+        <TextBlock x:Name="lblTitle" Text="Neue CD anlegen" Grid.Row="0" Margin="5,10,0,20"/>
 
         <Grid x:Name="grdCdFields" Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -38,5 +38,5 @@
         </UniformGrid>
 
     </Grid>
-    
+
 </Window>

@@ -49,7 +49,7 @@ namespace cdmanager.Wpf
             }
             else
             {
-                AddCdWindow addCdWindow = new AddCdWindow(/*selectedCd*/);
+                AddCdWindow addCdWindow = new AddCdWindow(selectedCd);
                 addCdWindow.ShowDialog();
             }
 
